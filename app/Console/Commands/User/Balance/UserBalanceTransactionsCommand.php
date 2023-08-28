@@ -30,7 +30,7 @@ class UserBalanceTransactionsCommand extends Command
     {
         $user = $this->getUserAttribute();
         $this->table(
-            ['Id', 'User ID', 'Amount', 'Type', 'Updated At', 'Created At'],
+            ['Id', 'User ID', 'Amount', 'Type', 'Created At', 'Updated At'],
             $user->transactions->toArray()
         );
     }
