@@ -9,12 +9,13 @@ trait HasUserAttribute
 {
     public function getUserAttribute(): User
     {
-        $userId = select(
-            label: 'У какого пользователя вы хотели бы изменить баланс или просмотреть транзакции?',
-            options: User::pluck('name', 'id'),
-            scroll: 10
+        $userEmail = select(
+            label: 'У какого пользователя вы хотели бы изменить баланс или просмотреть транзакции? Введите ID!',
+            options: User::pluck('email', 'id'),
+            scroll: 10,
+            hint: 'test@example.com',
         );
 
-        return User::find($userId);
+        return User::where('email', $userEmail)->first();
     }
 }

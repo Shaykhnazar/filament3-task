@@ -29,11 +29,9 @@ class UserBalanceTransactionsCommand extends Command
     public function handle()
     {
         $user = $this->getUserAttribute();
-        $transactions = UserService::getTransactions($user);
-
         $this->table(
-            ['Id', 'User ID', 'Type', 'Amount'],
-            $transactions->select(['id' , 'user_id', 'type', 'amount'])->toArray()
+            ['Id', 'User ID', 'Amount', 'Type', 'Updated At', 'Created At'],
+            $user->transactions->toArray()
         );
     }
 }
